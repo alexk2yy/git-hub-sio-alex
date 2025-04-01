@@ -1,3 +1,536 @@
-<html lang"fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex - Portfolio BTS SIO SISR</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --accent: #2980b9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(52, 152, 219, 0.1));
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill {
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 180px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--accent);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Style pour la section de veille technologique */
+        .veille-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .veille-card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .veille-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .veille-card-header {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem;
+        }
+        
+        .veille-card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .veille-card-body p {
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .source-list {
+            margin-top: 1rem;
+            list-style: none;
+        }
+        
+        .source-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .source-list li a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .source-list li a:hover {
+            text-decoration: underline;
+        }
+        
+        .read-more {
+            align-self: flex-start;
+            margin-top: auto;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--light);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .read-more:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Animation pour les éléments */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.5s; }
+        section:nth-child(4) { animation-delay: 0.7s; }
+        section:nth-child(5) { animation-delay: 0.9s; }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .projects-grid, .veille-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Alex</h1>
+            <p>Étudiant en BTS SIO option SISR</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#veille">Veille technologique</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="about">
+            <h2>À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Je suis Alex, étudiant en BTS Services Informatiques aux Organisations (SIO) avec spécialisation en Solutions d'Infrastructure, Systèmes et Réseaux (SISR).</p>
+                    <p>Passionné par l'informatique et les nouvelles technologies, je me forme aux métiers des réseaux, de la cybersécurité et de l'administration système. Mon objectif est de devenir un professionnel compétent dans la gestion et la sécurisation des infrastructures informatiques.</p>
+                    <p>Durant ma formation, j'ai développé des compétences techniques solides ainsi qu'une capacité d'adaptation aux évolutions constantes du domaine IT.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Mes compétences</h2>
+            <p>Voici les différentes compétences que j'ai pu acquérir durant ma formation et mes projets personnels :</p>
+            
+            <div class="skills-container">
+                <div class="skill">VLAN </div>
+                <div class="skill">Routeur </div>
+                <div class="skill">Cisco  </div>
+                <div class="skill">GLPI  </div>
+                <div class="skill">Docker (création de VM)  </div>
+                <div class="skill">Gestion du système OS : Windows</div>
+                <div class="skill">Sécurité informatique</div>
+                <div class="skill">Gestion du système OS : Linux</div>
+                <div class="skill"> Python </div>
+                <div class="skill">HTML, CSS</div>
+                <div class="skill">PHP  </div>
+                <div class="skill">SQL  </div>
+            </div>
+        </section>
+        
+        
+        <section id="veille">
+            <h2>Veille technologique</h2>
+            <p>Dans le cadre de ma formation, je réalise une veille technologique sur différents sujets liés à l'informatique. Voici les thématiques que je suis actuellement :</p>
+            
+            <div class="veille-grid">
+                <div class="veille-card">
+                    <div class="veille-card-header">
+                        <h3>Linux et l'écosystème ARM</h3>
+                    </div>
+                    <div class="veille-card-body">
+                        <p>Cette veille se concentre sur l'adoption croissante de l'architecture ARM dans les serveurs et les postes de travail sous Linux. J'analyse les tendances et innovations dans ce domaine en pleine expansion, avec un focus particulier sur les optimisations du noyau Linux pour ARM et l'écosystème logiciel en développement.</p>
+                        <h4>Sources principales :</h4>
+                        <ul class="source-list">
+                            <li><a href="#">LinuxFr.org</a> - Actualités et analyses sur Linux</li>
+                            <li><a href="#">Journal du Net</a> - Évolutions du marché des serveurs ARM</li>
+                            <li><a href="#">Next INpact</a> - Analyses des distributions Linux optimisées</li>
+                            <li><a href="#">CNLL</a> - Contributions françaises au noyau Linux</li>
+                        </ul>
+                        <a href="#" class="read-more">Lire mes analyses</a>
+                    </div>
+                </div>
+                
+                <div class="veille-card">
+                    <div class="veille-card-header">
+                        <h3>Sécurité des infrastructures cloud</h3>
+                    </div>
+                    <div class="veille-card-body">
+                        <p>Je surveille les évolutions en matière de sécurité des infrastructures cloud, notamment les meilleures pratiques, les vulnérabilités émergentes et les solutions de sécurisation. Cette veille couvre les aspects liés à la protection des données, la gestion des identités et des accès, et la conformité réglementaire.</p>
+                        <h4>Sources principales :</h4>
+                        <ul class="source-list">
+                            <li><a href="#">ANSSI</a> - Recommandations de sécurité cloud</li>
+                            <li><a href="#">Le Monde Informatique</a> - Actualités cybersécurité</li>
+                            <li><a href="#">ZDNet France</a> - Analyses des incidents de sécurité</li>
+                            <li><a href="#">CLUSIF</a> - Publications sur la sécurité des SI</li>
+                        </ul>
+                        <a href="#" class="read-more">Lire mes analyses</a>
+                    </div>
+                </div>
+                
+                <div class="veille-card">
+                    <div class="veille-card-header">
+                        <h3>Automatisation et Infrastructure as Code</h3>
+                    </div>
+                    <div class="veille-card-body">
+                        <p>Je suis l'évolution des pratiques d'automatisation et d'Infrastructure as Code (IaC) qui transforment la gestion des systèmes et des réseaux. Cette veille couvre les outils comme Ansible, Terraform, et les pratiques DevOps qui permettent de déployer et gérer les infrastructures de manière programmable.</p>
+                        <h4>Sources principales :</h4>
+                        <ul class="source-list">
+                            <li><a href="#">Développez.com</a> - Tutoriels et actualités DevOps</li>
+                            <li><a href="#">Silicon.fr</a> - Tendances de l'automatisation IT</li>
+                            <li><a href="#">L'Usine Digitale</a> - Transformation des métiers IT</li>
+                            <li><a href="#">IT-Connect</a> - Guides pratiques sur l'IaC</li>
+                        </ul>
+                        <a href="#" class="read-more">Lire mes analyses</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Vous souhaitez me contacter pour un projet, un stage ou simplement échanger sur le domaine de l'informatique ? N'hésitez pas à m'envoyer un message.</p>
+            
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">NOM</label>
+                    <input type="text" id="name" placeholder="ALEX RICHIR">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="alexrichir89@gmail.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder=""></textarea>
+                </div>
+                
+                <button type="submit">Envoyer</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#">&#128231;</a>
+            <a href="#">&#128101;</a>
+            <a href="#">&#128187;</a>
+        </div>
+        <p>&copy; 2025 - Alex | BTS SIO SISR</p>
+    </footer>
+    
+    <script>
+        // Animation pour la navigation fluide
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation pour le formulaire de contact
+        const submitButton = document.querySelector('button[type="submit"]');
+        submitButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Fonctionnalité de contact non implémentée - Ceci est une démo de portfolio');
+        });
+    </script>
+</body>
+</html>
